@@ -238,7 +238,7 @@ class Auth extends MY_Controller
             $data = [
                 'last_login' => date('Y-m-d H:i:s'),
             ];
-            $this->User_model->update(['id' => $query->id], $data);
+            $this->User_Model->update(['id' => $query->id], $data);
             return true;
         }
     }

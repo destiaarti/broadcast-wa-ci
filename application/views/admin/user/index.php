@@ -62,7 +62,7 @@ $(document).ready( function () {
 			$.ajax({
 
 // url: 'itk/delete/'+id,
-url: "<?=base_url('itk/delete/')?>"+id,
+url: "<?=base_url('admin/user/delete/')?>"+id,
 type: 'DELETE',
 error: function() {
 

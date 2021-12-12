@@ -6,7 +6,7 @@ class User extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('User_model');
+        $this->load->model('User_Model');
         $this->check_login();
         if ($this->session->userdata('role') != 'admin') {
             redirect('', 'refresh');
@@ -16,14 +16,14 @@ class User extends MY_Controller
     public function index()
     {
         $data            = konfigurasi('User', 'Kelola User');
-        $data['users'] = $this->User_model->get_all();
+        $data['users'] = $this->User_Model->get_all();
         $this->template->load('layouts/template', 'admin/user/index', $data);
     } 
 
     public function edit($id)
     {
         $data           = konfigurasi('Edit Password', 'Edit Password');
-        $data['users'] = $this->User_model->get_by_id($id);
+        $data['users'] = $this->User_Model->get_by_id($id);
         $this->template->load('layouts/template', 'admin/user/edit', $data);
     }
 
@@ -70,24 +70,24 @@ class User extends MY_Controller
             'first_name'    => $first_name,
             'last_name'    => $last_name,
             'username'    => $username,
-            'password'  => $password,
+            'password'  => get_hash($password),
             'email'    => $email,
             'phone'    => $phone,
             'activated'    => $activated,
             'role'    => $role,
         ];
-            $this->User_model->insert($data);
+            $this->User_Model->insert($data);
             $this->session->set_flashdata('Tambah', 'Success Saved !');
-            redirect('users');
+            redirect('admin/user');
         } else {
             $this->session->set_flashdata('msg', show_err_msg(validation_errors()));
-            redirect('users');
+            redirect('admin/user');
         }
     }
 
     public function delete($id)
     {
-        $this->User_model->get_by_id($id);
+        $this->User_Model->delete($id);
         $this->session->set_flashdata('Hapus', 'Success Deleted !');
     }
 }

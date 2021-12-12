@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class User_model extends CI_Model
+class User_Model extends CI_Model
 {
     public $table = 'tbl_user';
     public $id    = 'tbl_user.id';
