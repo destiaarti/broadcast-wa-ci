@@ -12,13 +12,13 @@
 			<!-- User Account: style can be found in dropdown.less -->
 			<li class="dropdown user user-menu">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="<?= base_url('assets/uploads/images/foto_profil/'.$userdata->photo); ?>" class="user-image">
+                <img src="<?= base_url('assets/uploads/images/foto_profil/user.jpg'); ?>" class="user-image">
                 <span class="hidden-xs"><span style="color:yellow">Hi, </span><?= $userdata->first_name; ?></span>
             </a>
 				<ul class="dropdown-menu">
 					<!-- User image -->
 					<li class="user-header">
-						<img src="<?= base_url('assets/uploads/images/foto_profil/'.$userdata->photo); ?>" class="img-circle">
+						<img src="<?= base_url('assets/uploads/images/foto_profil/user.jpg'); ?>" class="img-circle">
 						<p>
 							<?= $userdata->email; ?>
 							<small>Terakhir Masuk , <?= $userdata->last_login; ?></small>

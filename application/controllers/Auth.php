@@ -235,6 +235,10 @@ class Auth extends MY_Controller
               'updated_at'  => $query->updated_at,
             );
             $this->session->set_userdata($userdata);
+            $data = [
+                'last_login' => date('Y-m-d H:i:s'),
+            ];
+            $this->User_model->update(['id' => $query->id], $data);
             return true;
         }
     }
@@ -252,6 +256,7 @@ class Auth extends MY_Controller
             $this->form_validation->set_rules('email', 'Email', 'trim|required|min_length[5]|max_length[50]');
             $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[5]|max_length[22]');
             $error = $this->check_account();
+            
 
             if ($this->form_validation->run() && $error === true) {
                 $data = $this->Auth_model->check_account($this->input->post('email'), $this->input->post('password'));

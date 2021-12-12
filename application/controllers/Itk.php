@@ -6,7 +6,7 @@ class Itk extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Itk_Model');
+        $this->load->model('Itk_model');
         $this->check_login();
         $this->load->library('form_validation');
     }
@@ -14,24 +14,30 @@ class Itk extends MY_Controller
     public function index()
     {
         $data            = konfigurasi('Itk', 'Kelola Itk');
-        $data['itk'] = $this->Itk_Model->get_all();
+        $now = new DateTime(Date('Y-m-d'));
+        $data['itk'] = $this->Itk_model->get_all();
         $data['hari'] = 'SEMUA';
+        $data['date_now'] = $now;
         $this->template->load('layouts/template', 'itk/index', $data);
     }
 
     public function itk_30()
     {
         $data            = konfigurasi('Itk', 'Kelola Itk');
-        $data['itk'] = $this->Itk_Model->get_30();
+        $now = new DateTime(Date('Y-m-d'));
+        $data['itk'] = $this->Itk_model->get_30();
         $data['hari'] = 30;
+        $data['date_now'] = $now;
         $this->template->load('layouts/template', 'itk/index', $data);
     }
 
     public function itk_60()
     {
         $data            = konfigurasi('Itk', 'Kelola Itk');
-        $data['itk'] = $this->Itk_Model->get_60();
+        $now = new DateTime(Date('Y-m-d'));
+        $data['itk'] = $this->Itk_model->get_60();
         $data['hari'] = 60;
+        $data['date_now'] = $now;
         $this->template->load('layouts/template', 'itk/index', $data);
     }
 
@@ -74,19 +80,19 @@ class Itk extends MY_Controller
             'no_passport' => $no_passport,
             'no_hp' => $no_hp,
         ];
-            $this->Itk_Model->insert($data);
+            $this->Itk_model->insert($data);
             $this->session->set_flashdata('Tambah', 'Success Saved !');
             redirect('itk');
         } else {
             $this->session->set_flashdata('msg', show_err_msg(validation_errors()));
-            redirect('auth/profile');
+            redirect('itk');
         }
     }
 
     public function edit($id)
     {
         $data           = konfigurasi('Edit ITK', 'Edit ITK');
-        $data['itk'] = $this->Itk_Model->get_by_id($id);
+        $data['itk'] = $this->Itk_model->get_by_id($id);
         $this->template->load('layouts/template', 'itk/update', $data);
     }
 
@@ -100,7 +106,7 @@ class Itk extends MY_Controller
         $date_expired    = $this->input->post('date_expired');
         $no_passport    = $this->input->post('no_passport');
         $no_hp = $this->input->post('no_hp');
-        $itk = $this->Itk_Model->get_by_id($id);
+        $itk = $this->Itk_model->get_by_id($id);
         if (!empty($_FILES["itk_file"]["name"])) {
             $url = './assets/uploads/itk/';
             $itk_file = $itk->itk_file;
@@ -128,7 +134,7 @@ class Itk extends MY_Controller
             'no_passport' => $no_passport,
             'no_hp' => $no_hp,
         ];
-        $this->Itk_Model->update(['id' => $id], $data);
+        $this->Itk_model->update(['id' => $id], $data);
         $this->session->set_flashdata('Edit', 'Success Edit !');
         redirect('itk');
     }
@@ -136,14 +142,14 @@ class Itk extends MY_Controller
     public function detail($id)
     {
         $data           = konfigurasi('Detail ITK', 'Detail ITK');
-        $data['itk'] = $this->Itk_Model->get_by_id($id);
+        $data['itk'] = $this->Itk_model->get_by_id($id);
         if (!$data['itk']) show_404();
         $this->template->load('layouts/template', 'itk/detail', $data);
     }
 
     public function delete($id)
     {
-        $itk = $this->Itk_Model->get_by_id($id);
+        $itk = $this->Itk_model->get_by_id($id);
         $url = './assets/uploads/itk/';
         $itk_file = $itk->itk_file;
         $this->delete_img($url,$itk_file);
@@ -151,7 +157,7 @@ class Itk extends MY_Controller
         $itk_file1 = $itk->passport_file;
         $this->delete_img($url1, $itk_file1);
 
-        $this->Itk_Model->delete($id);
+        $this->Itk_model->delete($id);
         $this->session->set_flashdata('Hapus', 'Success Deleted !');
     }
 

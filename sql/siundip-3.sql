@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 05 Des 2021 pada 11.36
--- Versi server: 10.4.21-MariaDB
--- Versi PHP: 7.3.33
+-- Generation Time: Dec 12, 2021 at 07:28 AM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 7.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_itk`
+-- Table structure for table `tbl_itk`
 --
 
 CREATE TABLE `tbl_itk` (
@@ -43,7 +43,7 @@ CREATE TABLE `tbl_itk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_itk`
+-- Dumping data for table `tbl_itk`
 --
 
 INSERT INTO `tbl_itk` (`id`, `first_name`, `last_name`, `no_passport`, `email`, `date_start`, `date_expired`, `itk_file`, `passport_file`, `status_notification`, `send_notification`, `no_hp`) VALUES
@@ -146,54 +146,22 @@ INSERT INTO `tbl_itk` (`id`, `first_name`, `last_name`, `no_passport`, `email`, 
 (244, 'aa', 'gg', '56661', 'destaunique@yahoo.com', '2021-09-28', '2021-10-22', NULL, '0e475bb9b17b3fa4f94f31fba1635b8f-telephone-call-icon-logo-by-vexels-removebg-preview6.png', 0, NULL, NULL),
 (245, 'aa', 'gg', '56661', 'destaunique@yahoo.com', '2021-09-28', '2021-10-22', NULL, NULL, 0, NULL, NULL),
 (246, 'tes tambah', 'tambah', '56661', 'destaunique@yahoo.com', '2021-10-05', '2021-10-29', NULL, '181917357_3322417747861766_4886820816736691930_n.jpg', 0, NULL, NULL),
-(247, 'tes tambah', 'tambah', '', 'destaunique@yahoo.com', '2021-10-05', '2021-10-29', '89-891718_download-shopping-cart-icon-shop-cart-logo-png_png-removebg-preview2.png', '0e475bb9b17b3fa4f94f31fba1635b8f-telephone-call-icon-logo-by-vexels-removebg-preview8.png', 0, NULL, NULL),
-(248, 'yazid', 'yazid', '0930300', 'syahumaza@gmail.com', '2021-12-06', '2022-01-06', NULL, NULL, 0, NULL, '081229579874');
+(247, 'tes tambah', 'tambah', '', 'destaunique@yahoo.com', '2021-10-05', '2021-10-29', '89-891718_download-shopping-cart-icon-shop-cart-logo-png_png-removebg-preview2.png', '0e475bb9b17b3fa4f94f31fba1635b8f-telephone-call-icon-logo-by-vexels-removebg-preview8.png', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_konfigurasi`
---
-
-CREATE TABLE `tbl_konfigurasi` (
-  `id_konfigurasi` int(11) NOT NULL,
-  `nama_website` varchar(225) NOT NULL,
-  `logo` varchar(225) NOT NULL,
-  `favicon` varchar(225) NOT NULL,
-  `email` varchar(225) NOT NULL,
-  `no_telp` varchar(15) NOT NULL,
-  `alamat` varchar(255) NOT NULL,
-  `facebook` varchar(225) NOT NULL,
-  `instagram` varchar(255) NOT NULL,
-  `keywords` varchar(225) NOT NULL,
-  `metatext` varchar(225) NOT NULL,
-  `about` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `tbl_konfigurasi`
---
-
-INSERT INTO `tbl_konfigurasi` (`id_konfigurasi`, `nama_website`, `logo`, `favicon`, `email`, `no_telp`, `alamat`, `facebook`, `instagram`, `keywords`, `metatext`, `about`) VALUES
-(1, 'SUSANTOKUN', 'member.png', 'admin.png', 'admin@susantokun.com', '081906515912', 'KOMPLEK BTN Munjul No.12A 02/06, Sukaresmi, Cianjur, Jawa Barat, Indonesia (43253)', 'https://facebook.com/susantokundotcom', 'https://instagram.com/susantokun', 'info-susantokun, demo-susantokun, susantokun', 'Situs Edukasi, Tips dan Tutorial', 'Susantokun adalah situs edukasi seperti pelajaran dan ilmu pengetahuan, serta membahas tentang tips, tutorial, teknologi, tugas-tugas hingga berita terkini.');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `tbl_user`
+-- Table structure for table `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
   `id` int(11) NOT NULL,
-  `id_role` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `password_reset_key` varchar(100) DEFAULT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(12) NOT NULL,
-  `photo` varchar(100) NOT NULL,
   `activated` tinyint(1) NOT NULL DEFAULT 0,
   `last_login` datetime DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -202,17 +170,17 @@ CREATE TABLE `tbl_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `tbl_user`
+-- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`id`, `id_role`, `username`, `password`, `password_reset_key`, `first_name`, `last_name`, `email`, `phone`, `photo`, `activated`, `last_login`, `created_at`, `updated_at`, `role`) VALUES
-(1, 1, 'admin', '$2y$05$OA.OoeNHoEkbGGKazYqPU.UOaI5jmgro8x2pRSV56ClTWlDf0EEn2', '', 'ADMIN', 'aja', 'admin@mail.com', '081906515912', '1526456245974.png', 1, '2021-11-14 21:29:30', '2020-03-14 21:58:17', NULL, 'admin'),
-(2, 2, 'fakultas', '$2y$05$8GdJw3BVbmhN6x2t0MNise7O0xqLMCNAN1cmP6fkhy0DZl4SxB5iO', '', 'admin fakultas', 'aja', 'adminfakultas@mail.com', '081906515912', '1583991814826.png', 1, '2021-11-14 21:28:01', '2020-03-14 22:00:32', NULL, 'admin fakultas');
+INSERT INTO `tbl_user` (`id`, `username`, `password`, `first_name`, `last_name`, `email`, `phone`, `activated`, `last_login`, `created_at`, `updated_at`, `role`) VALUES
+(1, 'admin', '$2y$05$OA.OoeNHoEkbGGKazYqPU.UOaI5jmgro8x2pRSV56ClTWlDf0EEn2', 'ADMIN', 'aja', 'admin@mail.com', '081906515912', 1, '2021-11-14 21:29:30', '2020-03-14 21:58:17', NULL, 'admin'),
+(2, 'fakultas', '$2y$05$8GdJw3BVbmhN6x2t0MNise7O0xqLMCNAN1cmP6fkhy0DZl4SxB5iO', 'admin fakultas', 'aja', 'adminfakultas@mail.com', '081906515912', 1, '2021-11-14 21:28:01', '2020-03-14 22:00:32', NULL, 'admin fakultas');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `tbl_visa`
+-- Table structure for table `tbl_visa`
 --
 
 CREATE TABLE `tbl_visa` (
@@ -232,7 +200,7 @@ CREATE TABLE `tbl_visa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `tbl_visa`
+-- Dumping data for table `tbl_visa`
 --
 
 INSERT INTO `tbl_visa` (`id`, `first_name`, `visa_type`, `visa_number`, `date_expired`, `send_notification`, `status_notification`, `date_start`, `last_name`, `visa_file`, `cap_file`, `email`, `no_hp`) VALUES
@@ -265,53 +233,41 @@ INSERT INTO `tbl_visa` (`id`, `first_name`, `visa_type`, `visa_number`, `date_ex
 --
 
 --
--- Indeks untuk tabel `tbl_itk`
+-- Indexes for table `tbl_itk`
 --
 ALTER TABLE `tbl_itk`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tbl_konfigurasi`
---
-ALTER TABLE `tbl_konfigurasi`
-  ADD PRIMARY KEY (`id_konfigurasi`);
-
---
--- Indeks untuk tabel `tbl_user`
+-- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `tbl_visa`
+-- Indexes for table `tbl_visa`
 --
 ALTER TABLE `tbl_visa`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_itk`
+-- AUTO_INCREMENT for table `tbl_itk`
 --
 ALTER TABLE `tbl_itk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=249;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_konfigurasi`
---
-ALTER TABLE `tbl_konfigurasi`
-  MODIFY `id_konfigurasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT untuk tabel `tbl_user`
+-- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `tbl_visa`
+-- AUTO_INCREMENT for table `tbl_visa`
 --
 ALTER TABLE `tbl_visa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;

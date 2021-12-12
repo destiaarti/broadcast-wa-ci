@@ -6,8 +6,8 @@ class Email extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Visa_Model');
-        $this->load->model('Itk_Model');
+        $this->load->model('Visa_model');
+        $this->load->model('Itk_model');
         $this->check_login();
         $this->load->library('session');
         $this->load->library('form_validation');
@@ -18,9 +18,9 @@ class Email extends MY_Controller
 
     public function send($id, $type){
       if ($type == 'visa'){
-        $user = $this->Visa_Model->get_by_id($id);
+        $user = $this->Visa_model->get_by_id($id);
       } else {
-        $user = $this->Itk_Model->get_by_id($id);
+        $user = $this->Itk_model->get_by_id($id);
       }
       $sendmail = $this->send_mail($user, $type);
     }
@@ -65,10 +65,10 @@ class Email extends MY_Controller
       ];
       $this->session->set_flashdata('Tambah', 'Success Send Email !');
         if($type == "visa") {
-          $this->Visa_Model->update(['id' => $id], $data);
+          $this->Visa_model->update(['id' => $id], $data);
           redirect('visa'); 
         } else {
-          $this->Itk_Model->update(['id' => $id], $data);
+          $this->Itk_model->update(['id' => $id], $data);
           redirect('itk'); 
         }
     } else {
