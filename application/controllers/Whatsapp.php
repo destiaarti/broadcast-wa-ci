@@ -6,8 +6,8 @@ class Whatsapp extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Visa_Model');
-        $this->load->model('Itk_Model');
+        $this->load->model('Visa_model');
+        $this->load->model('Itk_model');
         $this->check_login();
         $this->load->library('form_validation');
     }
@@ -18,9 +18,9 @@ class Whatsapp extends MY_Controller
         // $type = "visa";
     //   $type    = $this->input->post('type');
       if ($type == 'visa'){
-        $user = $this->Visa_Model->get_by_id($id);
+        $user = $this->Visa_model->get_by_id($id);
       } else {
-        $user = $this->Itk_Model->get_by_id($id);
+        $user = $this->Itk_model->get_by_id($id);
       }
       $sendwa = $this->sendWa($user);
     //   echo(date('Y-m-d'));
@@ -32,11 +32,11 @@ class Whatsapp extends MY_Controller
       if ($sendwa == "berhasil") {
         $this->session->set_flashdata('Tambah', 'Success Send Whatsapp !');
         if($type == "visa") {
-          $this->Visa_Model->update(['id' => $id], $data);
+          $this->Visa_model->update(['id' => $id], $data);
           redirect('visa');
         }
         else {
-          $this->Visa_Model->update(['id' => $id], $data);
+          $this->Visa_model->update(['id' => $id], $data);
           redirect('itk');
         }
       } else {

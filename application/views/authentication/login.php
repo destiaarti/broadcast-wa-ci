@@ -3,7 +3,7 @@
 		<a href="<?php echo base_url(); ?>"><b>Diponegoro International Office</b></a>
 	</div>
 	<!-- /.login-logo -->
-	<div class="login-box-body">
+	<div class="login-box-body" style="height:260px">
 		<p class="login-box-msg text-bold"> Masuk Dengan Email & Password Anda</p>
 		<form method="post" action="<?php echo base_url('auth/login'); ?>" role="login">
 			<div class="form-group has-feedback">
@@ -16,16 +16,16 @@
 			</div>
 
 			<div class="row">
-				<div class="checkbox icheck col-xs-12 col-sm-6 col-md-6">
+				<div class="checkbox icheck col-xs-12 col-sm-6 col-md-6" style="margin-left:20px">
 					<label>
                         <?php echo form_checkbox('remember_code', '1', false, 'id="remember_code"');?>
                         Ingat Saya
                     </label>
 				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6" style="padding-bottom: 5px">
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-6" style="padding-bottom: 5px; margin-left:25%;">
 					<button type="submit" name="submit" value="login" class="btn btn-primary btn-block btn-flat"><i class="fa fa-sign-in" aria-hidden="true"></i> Masuk</button>
 				</div>
-			</div>
 			<!-- <a href="<?php echo base_url('auth/forgot_password');?>"> Lupa Kata Sandi?</a><br>
 			<a href="<?php echo base_url('auth/register');?>"> Daftar Akun</a> -->
 		</form>

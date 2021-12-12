@@ -33,7 +33,13 @@
 					<td><?= $itk->first_name ?> <?= $itk->last_name ?></td>
 					<td><?= $itk->no_passport ?></td>
 					<td><?= date('d/F/Y', strtotime($itk->date_start)) ?> - <?= date('d/F/Y', strtotime($itk->date_expired))?> </td>
-					<td><?= date_diff(date_create($itk->date_expired), date_create($itk->date_start))->format("%R%a days") ?></td>
+					<?php 
+					$expired = date_diff(date_create($itk->date_expired), $date_now)->format("%R%a days");
+					if($expired > 1) { ?>
+					<td><button class="btn btn-danger remove">Expired</button></td>
+					<?php } else { ?>
+						<td><?= $expired ?></td>
+					<?php } ?>
 					<td><?= date('d/F/Y', strtotime($itk->send_notification)) ?></td>
 					<td><?php if($itk->status_notification == 0){
 						?> <button type="button" class="btn bg-navy btn-flat margin">unsent</button> <?php

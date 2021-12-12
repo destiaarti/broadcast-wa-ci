@@ -6,7 +6,7 @@ class Visa extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Visa_Model');
+        $this->load->model('Visa_model');
         $this->check_login();
         $this->load->library('form_validation');
     }
@@ -14,7 +14,7 @@ class Visa extends MY_Controller
     public function index()
     {
         $data            = konfigurasi('visa', 'Kelola Visa');
-        $data['visa'] = $this->Visa_Model->get_all();
+        $data['visa'] = $this->Visa_model->get_all();
         $data['hari'] = 'SEMUA';
         $this->template->load('layouts/template', 'visa/index', $data);
     }
@@ -60,19 +60,19 @@ class Visa extends MY_Controller
             'visa_type' => $visa_type,
             'no_hp' => $no_hp,
         ];
-            $this->Visa_Model->insert($data);
+            $this->Visa_model->insert($data);
             $this->session->set_flashdata('Tambah', 'Success Saved !');
             redirect('visa');
         } else {
             $this->session->set_flashdata('msg', show_err_msg(validation_errors()));
-            redirect('auth/profile');
+            redirect('visa');
         }
     }
 
     public function edit($id)
     {
         $data           = konfigurasi('Edit Visa', 'Edit Visa');
-        $data['visa'] = $this->Visa_Model->get_by_id($id);
+        $data['visa'] = $this->Visa_model->get_by_id($id);
         $this->template->load('layouts/template', 'visa/update', $data);
     }
 
@@ -87,7 +87,7 @@ class Visa extends MY_Controller
         $visa_number    = $this->input->post('visa_number');
         $visa_type    = $this->input->post('visa_type');
         $no_hp = $this->input->post('no_hp');
-        $visa = $this->Visa_Model->get_by_id($id);
+        $visa = $this->Visa_model->get_by_id($id);
         $this->delete_img($url,$file);
         if (!empty($_FILES["visa_file"]["name"])) {
             $url = './assets/uploads/visa/';
@@ -117,7 +117,7 @@ class Visa extends MY_Controller
             'visa_type' => $visa_type,
             'no_hp' => $no_hp,
         ];
-        $this->Visa_Model->update(['id' => $id], $data);
+        $this->Visa_model->update(['id' => $id], $data);
         $this->session->set_flashdata('Edit', 'Success Edit !');
         redirect('visa');
     }
@@ -125,14 +125,14 @@ class Visa extends MY_Controller
     public function detail($id)
     {
         $data           = konfigurasi('Detail Visa', 'Detail Visa');
-        $data['visa'] = $this->Visa_Model->get_by_id($id);
+        $data['visa'] = $this->Visa_model->get_by_id($id);
         if (!$data['visa']) show_404();
         $this->template->load('layouts/template', 'visa/detail', $data);
     }
 
     public function delete($id)
     {
-        $visa = $this->Visa_Model->get_by_id($id);
+        $visa = $this->Visa_model->get_by_id($id);
         $url = './assets/uploads/cap/';
         $file = $visa->cap_file;
         $this->delete_img($url,$file);
@@ -140,7 +140,7 @@ class Visa extends MY_Controller
         $file1 = $itk->visa_file;
         $this->delete_img($url1, $file1);
 
-        $this->Visa_Model->delete($id);
+        $this->Visa_model->delete($id);
         $this->session->set_flashdata('Hapus', 'Success Deleted !');
     }
 
