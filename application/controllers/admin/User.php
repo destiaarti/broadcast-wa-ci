@@ -16,14 +16,14 @@ class User extends MY_Controller
     public function index()
     {
         $data            = konfigurasi('User', 'Kelola User');
-        $data['users'] = $this->User_Model->get_all();
+        $data['users'] = $this->User_model->get_all();
         $this->template->load('layouts/template', 'admin/user/index', $data);
     } 
 
     public function edit($id)
     {
         $data           = konfigurasi('Edit Password', 'Edit Password');
-        $data['users'] = $this->User_Model->get_by_id($id);
+        $data['users'] = $this->User_model->get_by_id($id);
         $this->template->load('layouts/template', 'admin/user/edit', $data);
     }
 
@@ -76,7 +76,7 @@ class User extends MY_Controller
             'activated'    => $activated,
             'role'    => $role,
         ];
-            $this->User_Model->insert($data);
+            $this->User_model->insert($data);
             $this->session->set_flashdata('Tambah', 'Success Saved !');
             redirect('admin/user');
         } else {
@@ -87,7 +87,7 @@ class User extends MY_Controller
 
     public function delete($id)
     {
-        $this->User_Model->delete($id);
+        $this->User_model->delete($id);
         $this->session->set_flashdata('Hapus', 'Success Deleted !');
     }
 }
