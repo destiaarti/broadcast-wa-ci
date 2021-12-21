@@ -32,16 +32,16 @@
 </tr>
 <tr>
 		
-			<?if($visa->visa_file != "default.png") { ?>
+			<?php if($visa->visa_file != "default.png") { ?>
 			
 				<td><img src="<?php echo base_url('assets/uploads/visa/'.$visa->visa_file); ?>" width="250"  height="220" /> </td>
 				<tr>
 				<td><?=anchor('assets/uploads/visa/'.$visa->visa_file, 'View Visa File!','target="_blank"')?></td>
-<? } else{ ?>
+<?php } else{ ?>
 	<td><img src="<?php echo base_url('assets/uploads/default.png'); ?>" width="250"  height="220" /> </td>
 		<tr>
 	<td>No File Upload</td>
-	<? } ?>
+	<?php } ?>
 </tr>
 <tr></tr>
 	</tr>
@@ -51,15 +51,15 @@
 </tr>
 <tr>
 	
-			<?if($visa->cap_file != "default.png") { ?>
+			<?php if($visa->cap_file != "default.png") { ?>
 				<td><img src="<?php echo base_url('assets/uploads/cap/'.$visa->cap_file); ?>" width="250"  height="220" /> </td>
 				<tr>
 		<td><?=anchor('assets/uploads/cap/'.$visa->cap_file, 'View Cap File!','target="_blank"')?></td>
-<? } else{ ?>
+<?php } else{ ?>
 	<td><img src="<?php echo base_url('assets/uploads/default.png'); ?>" width="250"  height="220" /> </td>
 	<tr>
 	<td>No File Upload</td>
-	<? } ?>
+	<?php } ?>
 </tr>
 <tr></tr>
 

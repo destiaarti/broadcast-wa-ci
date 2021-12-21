@@ -33,11 +33,11 @@
 				<td><img src="<?php echo base_url('assets/uploads/itk/'.$itk->itk_file); ?>" width="250"  height="220" /> </td>
 				<tr>
 				<td><?=anchor('assets/uploads/itk/'.$itk->itk_file, 'View ITK File!','target="_blank"')?></td>
-<? } else{ ?>
+<?php } else{ ?>
 	<td><img src="<?php echo base_url('assets/uploads/default.png'); ?>" width="250"  height="220" /> </td>
 		<tr>
 	<td>No File Upload</td>
-	<? } ?>
+	<?php } ?>
 </tr>
 <tr></tr>
 	</tr>
@@ -47,15 +47,15 @@
 </tr>
 <tr>
 	
-			<?if($itk->passport_file != "default.png") { ?>
+			<?php if($itk->passport_file != "default.png") { ?>
 				<td><img src="<?php echo base_url('assets/uploads/passport/'.$itk->passport_file); ?>" width="250"  height="220" /> </td>
 				<tr>
 		<td><?=anchor('assets/uploads/passport/'.$itk->passport_file, 'View Passport File!','target="_blank"')?></td>
-<? } else{ ?>
+<?php } else{ ?>
 	<td><img src="<?php echo base_url('assets/uploads/default.png'); ?>" width="250"  height="220" /> </td>
 	<tr>
 	<td>No File Upload</td>
-	<? } ?>
+	<?php } ?>
 </tr>
 <tr></tr>
 

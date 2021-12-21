@@ -37,11 +37,11 @@
 					<td><?= $visa->visa_type ?></td>
 					<td><?= date('d/F/Y', strtotime($visa->date_start)) ?> - <?= date('d/F/Y', strtotime($visa->date_expired))?> </td>
 					<?php 
-					$expired = date_diff(date_create($visa->date_expired), $date_now)->format("%R%a days");
+					$expired = date_diff(date_create($visa->date_expired), $date_now)->format("%R%a");
 					if($expired > 1) { ?>
 					<td><button class="btn btn-danger remove">Expired</button></td>
 					<?php } else { ?>
-						<td><?= $expired ?></td>
+						<td><?= $expired, "days" ?></td>
 					<?php } ?>
 					<?php if($visa->send_notification !== null) { ?>
 					<td><?= date('d/F/Y', strtotime($visa->send_notification)) ?></td>
