@@ -15,7 +15,8 @@ class Visa extends MY_Controller
     {
         $data            = konfigurasi('visa', 'Kelola Visa');
         $data['visa'] = $this->Visa_model->get_all();
-        $data['hari'] = 'SEMUA';
+        $now = new DateTime(Date('Y-m-d'));
+        $data['date_now'] = $now;
         $this->template->load('layouts/template', 'visa/index', $data);
     }
 

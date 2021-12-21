@@ -15,6 +15,8 @@ class Home extends MY_Controller
     public function index()
     {
 		$data = konfigurasi('Dashboard');
+        $now = new DateTime(Date('Y-m-d'));
+        $data['date_now'] = $now;
         $this->template->load('layouts/template', 'member/dashboard', $data);
     }
 }
