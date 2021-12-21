@@ -13,6 +13,8 @@
 				<th>Phone</th>
 				<th>Role</th>
 				<th>Last Login</th>
+				<th>Status</th>
+				<th></th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -27,8 +29,16 @@
 					<td><?= $users->phone ?></td>
 					<td><?= $users->role ?></td>
 					<td><?= $users->last_login ?></td>
+					<?php if($users->activated == 0) { ?>
+					<td><?= "nonaktif" ?></td>
+					<?php } else { ?>
+					<td><?= "aktif" ?></td>
+					<?php } ?>
 					<td>
-					  <?php echo anchor(site_url('admin/user/edit/' . $users->id), 'Edit Password', array('data-toggle' => 'tooltip', 'title' => 'edit data', 'class' => 'btn bg-navy btn-normal')) ?>
+					  <?php echo anchor(site_url('admin/user/edit/' . $users->id), 'Edit Profile', array('data-toggle' => 'tooltip', 'title' => 'edit profile', 'class' => 'btn bg-green btn-normal')) ?>
+					</td>
+					<td>
+					  <?php echo anchor(site_url('admin/user/edit_password/' . $users->id), 'Edit Password', array('data-toggle' => 'tooltip', 'title' => 'edit password', 'class' => 'btn bg-navy btn-normal')) ?>
 					</td>
 					<td><button type="submit" class="btn btn-danger remove"> Delete</button></a>
 		     </td>

@@ -28,7 +28,7 @@
 </tr>
 <tr>
 		
-			<?if($itk->itk_file != "default.png") { ?>
+			<?php if($itk->itk_file != null) { ?>
 			
 				<td><img src="<?php echo base_url('assets/uploads/itk/'.$itk->itk_file); ?>" width="250"  height="220" /> </td>
 				<tr>
@@ -47,7 +47,7 @@
 </tr>
 <tr>
 	
-			<?php if($itk->passport_file != "default.png") { ?>
+			<?php if($itk->passport_file != null) { ?>
 				<td><img src="<?php echo base_url('assets/uploads/passport/'.$itk->passport_file); ?>" width="250"  height="220" /> </td>
 				<tr>
 		<td><?=anchor('assets/uploads/passport/'.$itk->passport_file, 'View Passport File!','target="_blank"')?></td>

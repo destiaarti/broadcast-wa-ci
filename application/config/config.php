@@ -492,6 +492,7 @@ $config['compress_output'] = FALSE;
 |
 */
 $config['time_reference'] = 'local';
+// $config['time_reference'] = 'Asia/Jakarta';
 
 /*
 |--------------------------------------------------------------------------

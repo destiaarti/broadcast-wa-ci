@@ -20,25 +20,43 @@ class User extends MY_Controller
         $this->template->load('layouts/template', 'admin/user/index', $data);
     } 
 
-    public function edit($id)
+    public function edit_password($id)
     {
         $data           = konfigurasi('Edit Password', 'Edit Password');
         $data['users'] = $this->User_model->get_by_id($id);
-        $this->template->load('layouts/template', 'admin/user/edit', $data);
+        $this->template->load('layouts/template', 'admin/user/edit_password', $data);
+    }
+
+    public function edit($id)
+    {
+        $data           = konfigurasi('Edit Profile', 'Edit Profile');
+        $data['users'] = $this->User_model->get_by_id($id);
+        $this->template->load('layouts/template', 'admin/user/update', $data);
     }
 
     public function update()
     {
         $id      = $this->input->post('id');
-        $name    = $this->input->post('name');
-        $address = $this->input->post('address');
+        $username    = $this->input->post('username');
+        $first_name    = $this->input->post('first_name');
+        $last_name    = $this->input->post('last_name');
+        $email    = $this->input->post('email');
+        $phone   = $this->input->post('phone');
+        $activated    = $this->input->post('activated');
+        $role    = $this->input->post('role');
 
         $data = [
-            'name'    => $name,
-            'address' => $address,
+            'first_name'    => $first_name,
+            'last_name'    => $last_name,
+            'username'    => $username,
+            'email'    => $email,
+            'phone'    => $phone,
+            'activated'    => $activated,
+            'role'    => $role,
         ];
-        $this->Person_model->update(['id' => $id], $data);
-        redirect('admin/users');
+        $this->User_model->update(['id' => $id], $data);
+        $this->session->set_flashdata('Edit', 'Success Saved !');
+        redirect('admin/user');
     }
 
     public function add()

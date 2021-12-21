@@ -42,19 +42,19 @@ class Email extends MY_Controller
     $this->load->library('email', $config);
 
     // Email dan nama pengirim
-    $this->email->from('no-reply@undip.com', 'Tes Kirim');
+    $this->email->from('no-reply@undip.com', 'Notification DIO UNDIP');
 
     // Email penerima
     $this->email->to($user->email); // Ganti dengan email tujuan
 
     // Lampiran email, isi dengan url/path file
-    $this->email->attach('https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    // $this->email->attach('https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
 
     // Subject email
-    $this->email->subject('Kirim Email dengan SMTP Gmail CodeIgniter | Tes');
+    $this->email->subject('Notification almost expired date from DIO UNDIP');
 
     // Isi email
-    $this->email->message("Ini adalah contoh email yang dikirim menggunakan SMTP Gmail pada CodeIgniter.<br><br> Klik <strong><a href='https://masrud.com/kirim-email-smtp-gmail-codeigniter/' target='_blank' rel='noopener'>disini</a></strong> untuk melihat.");
+    $this->email->message("Dear ".$user->first_name." ".$user->last_name.", <br> Ini adalah contoh email yang dikirim menggunakan SMTP Gmail pada CodeIgniter.<br><br> Klik <strong><a href='https://masrud.com/kirim-email-smtp-gmail-codeigniter/' target='_blank' rel='noopener'>disini</a></strong> untuk melihat.");
 
     // Tampilkan pesan sukses atau error
     if ($this->email->send()) {
