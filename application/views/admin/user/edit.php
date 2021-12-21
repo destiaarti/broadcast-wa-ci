@@ -1,4 +1,4 @@
-<?php echo anchor('admin/users', 'Back'); ?>
+<?php echo anchor('admin/user', 'Back'); ?>
 <form action="<?= base_url('auth/changePasswordUser') ?>" method="post">
 <input type="hidden" name="id" value="<?= $users->id ?>">
 <div class="tab-pane" id="password">

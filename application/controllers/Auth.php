@@ -8,6 +8,7 @@ class Auth extends MY_Controller
         parent::__construct();
         $this->load->database();
         $this->load->model('Auth_model');
+        $this->load->model('User_model');
     }
 
     public function profile()
@@ -229,7 +230,7 @@ class Auth extends MY_Controller
               'last_name'   => $query->last_name,
               'email'       => $query->email,
               'phone'       => $query->phone,
-              'photo'       => $query->photo,
+            //   'photo'       => $query->photo,
               'last_login'  => $query->last_login,
               'created_at'  => $query->created_at,
               'updated_at'  => $query->updated_at,

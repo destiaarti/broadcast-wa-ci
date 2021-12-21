@@ -23,6 +23,12 @@ class Itk_model extends CI_Model
         return $result->result();
     }
 
+    public function get_notif(){
+        $this->db->from($this->table);
+        $query = $this->db->where('status_notification',0)->get();
+        return $query->result();
+    }
+
     public function get_last()
     {
         $this->db->from($this->table);

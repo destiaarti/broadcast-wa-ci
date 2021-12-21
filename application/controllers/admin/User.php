@@ -70,7 +70,7 @@ class User extends MY_Controller
             'first_name'    => $first_name,
             'last_name'    => $last_name,
             'username'    => $username,
-            'password'  => $password,
+            'password'  => get_hash($password),
             'email'    => $email,
             'phone'    => $phone,
             'activated'    => $activated,
@@ -78,16 +78,16 @@ class User extends MY_Controller
         ];
             $this->User_model->insert($data);
             $this->session->set_flashdata('Tambah', 'Success Saved !');
-            redirect('users');
+            redirect('admin/user');
         } else {
             $this->session->set_flashdata('msg', show_err_msg(validation_errors()));
-            redirect('users');
+            redirect('admin/user');
         }
     }
 
     public function delete($id)
     {
-        $this->User_model->get_by_id($id);
+        $this->User_model->delete($id);
         $this->session->set_flashdata('Hapus', 'Success Deleted !');
     }
 }

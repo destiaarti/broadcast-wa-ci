@@ -40,7 +40,11 @@
 					<?php } else { ?>
 						<td><?= $expired ?></td>
 					<?php } ?>
+					<?php if($itk->send_notification !== null) { ?>
 					<td><?= date('d/F/Y', strtotime($itk->send_notification)) ?></td>
+					<?php } else { ?>
+					<td><?= "-" ?></td>
+					<?php } ?>
 					<td><?php if($itk->status_notification == 0){
 						?> <button type="button" class="btn bg-navy btn-flat margin">unsent</button> <?php
 					}else{

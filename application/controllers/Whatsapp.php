@@ -36,7 +36,7 @@ class Whatsapp extends MY_Controller
           redirect('visa');
         }
         else {
-          $this->Visa_model->update(['id' => $id], $data);
+          $this->Itk_model->update(['id' => $id], $data);
           redirect('itk');
         }
       } else {
@@ -63,7 +63,7 @@ class Whatsapp extends MY_Controller
       CURLOPT_FOLLOWLOCATION => true,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => 'POST',
-      CURLOPT_POSTFIELDS => array('number' => $user->no_hp,'message' => 'lorem ipsum visa number: '.$user->visa_number.' awaoa'),
+      CURLOPT_POSTFIELDS => array('number' => $user->no_hp,'message' => 'lorem ipsum visa number: '.$user->first_name.' awaoa'),
   ));
   
   $response = curl_exec($curl);
