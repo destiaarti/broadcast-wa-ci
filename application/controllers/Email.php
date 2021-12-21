@@ -54,7 +54,8 @@ class Email extends MY_Controller
     $this->email->subject('Notification almost expired date from DIO UNDIP');
 
     // Isi email
-    $this->email->message("Dear ".$user->first_name." ".$user->last_name.", <br> Ini adalah contoh email yang dikirim menggunakan SMTP Gmail pada CodeIgniter.<br><br> Klik <strong><a href='https://masrud.com/kirim-email-smtp-gmail-codeigniter/' target='_blank' rel='noopener'>disini</a></strong> untuk melihat.");
+    $this->email->message("Dear ".$user->first_name." ".$user->last_name.", <br> We would like to inform you that deadlines of your permit will be expired ".$user->date_expired."<br> We would like to see you at our office as soon as possible. Please contact us if you have any question. <br>
+    <br> Yours sincerely, <br><br><br><br> Rohman");
 
     // Tampilkan pesan sukses atau error
     if ($this->email->send()) {
