@@ -56,7 +56,7 @@
                 <div class="form-group">
                   <label for="exampleInputFile">ITK File</label>
 				  </br>
-				  <?if($itk->itk_file != "default.png") { ?>
+				  <?if($itk->itk_file != null) { ?>
 		<button><?=anchor('upload/itk/'.$itk->itk_file, 'View ITK File!','target="_blank"')?></button>
 		
 <? } else{ ?>
@@ -71,7 +71,7 @@
 				<div class="form-group">
                   <label for="exampleInputFile">Passport File</label>
 				  </br>
-				  <?if($itk->passport_file != "default.png") { ?>
+				  <?if($itk->passport_file != null) { ?>
 		<button><?=anchor('upload/passport/'.$itk->passport_file, 'View Passport File!','target="_blank"')?></button>
 		
 <? } else{ ?>

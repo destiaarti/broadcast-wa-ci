@@ -6,7 +6,7 @@
 		<!-- Profile Image -->
 		<div class="box box-primary">
 			<div class="box-body box-profile">
-				<img class="profile-user-img img-responsive img-circle" src="<?= base_url('assets/uploads/images/foto_profil/'.$userdata->photo); ?>" style="width:125px; height:125px">
+				<img class="profile-user-img img-responsive img-circle" src="<?= base_url('assets/uploads/images/foto_profil/user.jpg'); ?>" style="width:125px; height:125px">
 
 				<h3 class="profile-username text-center"><?= $userdata->first_name; ?> <?= $userdata->last_name; ?></h3>
 

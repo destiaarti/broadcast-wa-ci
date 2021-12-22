@@ -42,19 +42,20 @@ class Email extends MY_Controller
     $this->load->library('email', $config);
 
     // Email dan nama pengirim
-    $this->email->from('no-reply@undip.com', 'Tes Kirim');
+    $this->email->from('no-reply@undip.com', 'Notification '.$type.' DIO UNDIP');
 
     // Email penerima
     $this->email->to($user->email); // Ganti dengan email tujuan
 
     // Lampiran email, isi dengan url/path file
-    $this->email->attach('https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    // $this->email->attach('https://images.pexels.com/photos/169573/pexels-photo-169573.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
 
     // Subject email
-    $this->email->subject('Kirim Email dengan SMTP Gmail CodeIgniter | Tes');
+    $this->email->subject('Notification almost expired date from DIO UNDIP');
 
     // Isi email
-    $this->email->message("Ini adalah contoh email yang dikirim menggunakan SMTP Gmail pada CodeIgniter.<br><br> Klik <strong><a href='https://masrud.com/kirim-email-smtp-gmail-codeigniter/' target='_blank' rel='noopener'>disini</a></strong> untuk melihat.");
+    $this->email->message("Dear ".$user->first_name." ".$user->last_name.", <br> We would like to inform you that deadlines of your permit will be expired ".$user->date_expired."<br> We would like to see you at our office as soon as possible. Please contact us if you have any question. <br>
+    <br> Yours sincerely, <br><br><br><br> Rohman");
 
     // Tampilkan pesan sukses atau error
     if ($this->email->send()) {
@@ -64,12 +65,12 @@ class Email extends MY_Controller
         'send_notification'    => date('Y-m-d'),
       ];
       $this->session->set_flashdata('Tambah', 'Success Send Email !');
-        if($type == "visa") {
-          $this->Visa_model->update(['id' => $id], $data);
-          redirect('visa'); 
-        } else {
-          $this->Itk_model->update(['id' => $id], $data);
+        if($type == "itk") {
+          $this->Itk_model->update(['id' => $user->id], $data);
           redirect('itk'); 
+        } else {
+          $this->Visa_model->update(['id' => $user->id], $data);
+          redirect('visa'); 
         }
     } else {
         $this->session->set_flashdata('Error', 'Email tidak dapat dikirim !');
