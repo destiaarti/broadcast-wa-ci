@@ -42,7 +42,7 @@ class Email extends MY_Controller
     $this->load->library('email', $config);
 
     // Email dan nama pengirim
-    $this->email->from('no-reply@undip.com', 'Notification DIO UNDIP');
+    $this->email->from('no-reply@undip.com', 'Notification '.$type.' DIO UNDIP');
 
     // Email penerima
     $this->email->to($user->email); // Ganti dengan email tujuan
@@ -65,12 +65,12 @@ class Email extends MY_Controller
         'send_notification'    => date('Y-m-d'),
       ];
       $this->session->set_flashdata('Tambah', 'Success Send Email !');
-        if($type == "visa") {
-          $this->Visa_model->update(['id' => $id], $data);
-          redirect('visa'); 
-        } else {
-          $this->Itk_model->update(['id' => $id], $data);
+        if($type == "itk") {
+          $this->Itk_model->update(['id' => $user->id], $data);
           redirect('itk'); 
+        } else {
+          $this->Visa_model->update(['id' => $user->id], $data);
+          redirect('visa'); 
         }
     } else {
         $this->session->set_flashdata('Error', 'Email tidak dapat dikirim !');
