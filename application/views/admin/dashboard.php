@@ -147,10 +147,10 @@
 					<?php } else { ?>
 					<td><?= "-" ?></td>
 					<?php } ?>
-                <td><? if($visa->status_notification == 0){
-                  ?> <button type="button" class="btn bg-navy btn-flat margin">unsent</button> <?
+                <td><?php if($visa->status_notification == 0){
+                  ?> <button type="button" class="btn bg-navy btn-flat margin">unsent</button> <?php
                 }else{
-                  ?> <button type="button" class="btn bg-green btn-flat margin">sent</button> <?
+                  ?> <button type="button" class="btn bg-green btn-flat margin">sent</button> <?php
                 } ?>
                 </td>
 				</tr>

@@ -80,21 +80,21 @@
 					<td><?= $itk->no_passport ?></td>
 					<td><?= date('d/F/Y', strtotime($itk->date_start)) ?> - <?= date('d/F/Y', strtotime($itk->date_expired))?> </td>
           <?php 
-					$expired = date_diff(date_create($itk->date_expired), $date_now)->format("%R%a days");
+					$expired = date_diff(date_create($itk->date_expired), $date_now)->format("%R%a");
 					if($expired > 1) { ?>
 					<td><button class="btn btn-danger remove">Expired</button></td>
 					<?php } else { ?>
-						<td><?= $expired ?></td>
+            <td><?= $expired, "days" ?></td>
 					<?php } ?>
 					<?php if($itk->send_notification !== null) { ?>
 					<td><?= date('d/F/Y', strtotime($itk->send_notification)) ?></td>
 					<?php } else { ?>
 					<td><?= "-" ?></td>
 					<?php } ?>
-					<td><? if($itk->status_notification == 0){
-						?> <button type="button" class="btn bg-navy btn-flat margin">unsent</button> <?
+					<td><?php if($itk->status_notification == 0){
+						?> <button type="button" class="btn bg-navy btn-flat margin">unsent</button> <?php
 					}else{
-						?> <button type="button" class="btn bg-green btn-flat margin">sent</button> <?
+						?> <button type="button" class="btn bg-green btn-flat margin">sent</button> <?php
 					} ?>
 					</td>
 				</tr>
@@ -136,21 +136,21 @@
                 <td><?= $visa->visa_type ?></td>
                 <td><?= date('d/F/Y', strtotime($visa->date_start)) ?> - <?= date('d/F/Y', strtotime($visa->date_expired))?> </td>
                 <?php 
-				        	$expired = date_diff(date_create($visa->date_expired), $date_now)->format("%R%a days");
+				        	$expired = date_diff(date_create($visa->date_expired), $date_now)->format("%R%a");
 					       if($expired > 1) { ?>
 					         <td><button class="btn btn-danger remove">Expired</button></td>
 					        <?php } else { ?>
-						      <td><?= $expired ?></td>
+                    <td><?= $expired, "days" ?></td>
 					        <?php } ?>
 					        <?php if($visa->send_notification !== null) { ?>
 					          <td><?= date('d/F/Y', strtotime($itk->send_notification)) ?></td>
 					        <?php } else { ?>
 					        <td><?= "-" ?></td>
 					       <?php } ?>
-                <td><? if($visa->status_notification == 0){
-                  ?> <button type="button" class="btn bg-navy btn-flat margin">unsent</button> <?
+                <td><?php if($visa->status_notification == 0){
+                  ?> <button type="button" class="btn bg-navy btn-flat margin">unsent</button> <?php
                 }else{
-                  ?> <button type="button" class="btn bg-green btn-flat margin">sent</button> <?
+                  ?> <button type="button" class="btn bg-green btn-flat margin">sent</button> <?php
                 } ?>
                 </td>
 				</tr>

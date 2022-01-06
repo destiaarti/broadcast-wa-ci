@@ -98,33 +98,34 @@ class Auth extends MY_Controller
     public function changePasswordUser()
     {
         // $this->form_validation->set_rules('passLama', 'Password Lama', 'trim|required|min_length[5]|max_length[25]');
-        $this->form_validation->set_rules('passBaru', 'Password Baru', 'trim|required|min_length[5]|max_length[25]');
-        $this->form_validation->set_rules('passKonf', 'Password Konfirmasi', 'trim|required|min_length[5]|max_length[25]');
+        $this->form_validation->set_rules('passBaru', 'Password Baru', 'trim|required|max_length[25]');
+        $this->form_validation->set_rules('passKonf', 'Password Konfirmasi', 'trim|required|max_length[25]');
         $id = $this->input->post('id');
         if ($this->form_validation->run() == true) {
-            // if (password_verify($this->input->post('passLama'), $this->session->userdata('password'))) {
-              if (password_verify($this->session->userdata('password'))) {
                 if ($this->input->post('passBaru') != $this->input->post('passKonf')) {
-                    $this->session->set_flashdata('msg', show_err_msg('Password Baru dan Konfirmasi Password harus sama'));
+                    $this->session->set_flashdata('Error', 'Password doesnt match !');
                     redirect('admin/user');
                 } else {
                     $data = ['password' => get_hash($this->input->post('passBaru'))];
                     $result = $this->Auth_model->update($data, $id);
                     if ($result > 0) {
                         $this->updateProfil();
-                        $this->session->set_flashdata('msg', show_succ_msg('Password Berhasil diubah'));
+                        // $this->session->set_flashdata('msg', show_succ_msg('Password Berhasil diubah'));
+                        $this->session->set_flashdata('Tambah', 'Success Saved !');
                         redirect('admin/user');
                     } else {
-                        $this->session->set_flashdata('msg', show_err_msg('Password Gagal diubah'));
+                        $this->session->set_flashdata('Error', 'Failed to saved !');
+
                         redirect('admin/user');
                     }
                 }
-            } else {
-                $this->session->set_flashdata('msg', show_err_msg('Password Salah'));
-                redirect('admin/user');
-            }
+            
+            // } else {
+            //     $this->session->set_flashdata('Error', 'Wrong Password !');
+            //     redirect('admin/user');
+            // }
         } else {
-            $this->session->set_flashdata('msg', show_err_msg(validation_errors()));
+            $this->session->set_flashdata('Error', 'Check your data!');
             redirect('admin/user');
         }
     }
@@ -236,10 +237,6 @@ class Auth extends MY_Controller
               'updated_at'  => $query->updated_at,
             );
             $this->session->set_userdata($userdata);
-            $data = [
-                'last_login' => date('Y-m-d H:i:s'),
-            ];
-            $this->User_model->update(['id' => $query->id], $data);
             return true;
         }
     }

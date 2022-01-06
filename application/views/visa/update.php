@@ -66,7 +66,7 @@
                 <div class="form-group">
                   <label for="exampleInputFile">Visa File</label>
 				  </br>
-				  <?if($visa->visa_file != "default.png") { ?>
+				  <?if($visa->visa_file != null) { ?>
 		<button><?=anchor('upload/visa/'.$visa->visa_file, 'View visa File!','target="_blank"')?></button>
 		
 <? } else{ ?>
@@ -81,8 +81,8 @@
 				<div class="form-group">
                   <label for="exampleInputFile">Cap Visa Kedatangan File</label>
 				  </br>
-				  <?if($visa->cap_file != "default.png") { ?>
-		<button><?=anchor('upload/cap/'.$visa->cap_file, 'View Cap Visa Kedatngan File!','target="_blank"')?></button>
+				  <?if($visa->cap_file != null) { ?>
+		<button><?=anchor('upload/cap/'.$visa->cap_file, 'View Cap Visa Kedatangan File!','target="_blank"')?></button>
 		
 <? } else{ ?>
 	<p>No File Upload</p>

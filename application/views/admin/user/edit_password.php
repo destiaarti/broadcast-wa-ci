@@ -2,7 +2,6 @@
 <form action="<?= base_url('auth/changePasswordUser') ?>" method="post">
 <input type="hidden" name="id" value="<?= $users->id ?>">
 <div class="tab-pane" id="password">
-					<form class="form-horizontal" action="<?php echo base_url('auth/updatePassword') ?>" method="POST">
 					<div class="col-sm-8">	
 					<div class="form-group">
 							<label for="passBaru" class="col-sm-2 control-label">Password Baru</label>
@@ -16,6 +15,8 @@
 							</div>
 						</div>
 				</div>
+				<?php echo @$error; ?> 
+			        	<?php if(validation_errors()) { echo validation_errors(); }?>
 				<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-8" style="padding:20px">
 								<button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-check-circle"></i> Simpan</button>
