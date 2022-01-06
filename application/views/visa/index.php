@@ -18,7 +18,7 @@
 				<th>SEND NOTIFICATION</th>
 				<th>STATUS</th>
 
-				<?php if($userdata->role == "admin") {?> 
+				<?php if($userdata->role == "admin") {?>
 				<th></th>
 				<th></th>
 				<?php } ?>

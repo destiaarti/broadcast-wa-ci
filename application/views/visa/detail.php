@@ -32,7 +32,7 @@
 </tr>
 <tr>
 		
-			<?php if($visa->visa_file != "default.png") { ?>
+			<?php if($visa->visa_file != null) { ?>
 			
 				<td><img src="<?php echo base_url('assets/uploads/visa/'.$visa->visa_file); ?>" width="250"  height="220" /> </td>
 				<tr>
@@ -51,7 +51,7 @@
 </tr>
 <tr>
 	
-			<?php if($visa->cap_file != "default.png") { ?>
+			<?php if($visa->cap_file != null) { ?>
 				<td><img src="<?php echo base_url('assets/uploads/cap/'.$visa->cap_file); ?>" width="250"  height="220" /> </td>
 				<tr>
 		<td><?=anchor('assets/uploads/cap/'.$visa->cap_file, 'View Cap File!','target="_blank"')?></td>

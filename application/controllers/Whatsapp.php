@@ -63,7 +63,7 @@ class Whatsapp extends MY_Controller
       CURLOPT_FOLLOWLOCATION => true,
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => 'POST',
-      CURLOPT_POSTFIELDS => array('number' => $user->no_hp,'message' => 'lorem ipsum visa number: '.$user->first_name.' awaoa'),
+      CURLOPT_POSTFIELDS => array('number' => $user->no_hp,'message' => "Dear $user->first_name $user->last_name,\n\nWe would like to inform you that deadlines of your permit will be expired $user->date_expired\nWe would like to see you at our office as soon as possible.\nPlease contact us if you have any question.\n\nYours sincerely,\n\n\n\nRohman"),
   ));
   
   $response = curl_exec($curl);
