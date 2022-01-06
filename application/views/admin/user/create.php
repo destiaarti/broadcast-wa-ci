@@ -1,12 +1,12 @@
 
-<?php echo anchor('/user', 'Back'); ?>
+<?php echo anchor('admin/user', 'Back'); ?>
 <div class="row">
         <div class="col-md-12">
           <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Tambah User</h3>
             </div>
-            <form action="<?= base_url('user/create') ?>" method="post" autocomplete="on" enctype="multipart/form-data">
+            <form action="<?= base_url('admin/user/create') ?>" method="post" autocomplete="on" enctype="multipart/form-data">
     
               <div class="box-body">
                 <div class="col-md-7">
@@ -37,6 +37,12 @@
                   <div class="form-group">
                     <label for="exampleInputEmail1">Email</label>
                     <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" required>
+                  </div>
+				        </div>
+                <div class="col-md-7">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Password</label>
+                    <input type="text" name="password" class="form-control" id="password" placeholder="Enter password" required>
                   </div>
 				        </div>
                 <div class="col-md-7">

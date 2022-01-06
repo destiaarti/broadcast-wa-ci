@@ -21,6 +21,12 @@ class Visa_model extends CI_Model
         return $query->result();
     }
 
+    public function get_notif(){
+        $this->db->from($this->table);
+        $query = $this->db->where('status_notification',0)->get();
+        return $query->result();
+    }
+
     public function get_count_all()
     {
         $this->db->from($this->table);

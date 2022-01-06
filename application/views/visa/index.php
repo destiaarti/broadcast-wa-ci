@@ -2,7 +2,7 @@
 <div class="row">
 <div class="col-md-12">
 <div style="padding-bottom:20px;display:flex;justify-content: space-between;">
-	<h1><i class="fa fa-fw fa-cc"></i> Visa 	<?php echo $hari ?> HARI </h1>
+	<h1><i class="fa fa-fw fa-cc"></i> Visa</h1>
 	<a href="<?php echo site_url('visa/add') ?>" class="btn bg-navy btn-flat margin">Add New Visa</a>
 </div>
 <div class="table-responsive" style="padding-top: 6px">
@@ -36,8 +36,18 @@
 					<td><?= $visa->visa_number ?></td>
 					<td><?= $visa->visa_type ?></td>
 					<td><?= date('d/F/Y', strtotime($visa->date_start)) ?> - <?= date('d/F/Y', strtotime($visa->date_expired))?> </td>
-					<td><?= date_diff(date_create($visa->date_expired), date_create($visa->date_start))->format("%R%a days") ?></td>
+					<?php 
+					$expired = date_diff(date_create($visa->date_expired), $date_now)->format("%R%a days");
+					if($expired > 1) { ?>
+					<td><button class="btn btn-danger remove">Expired</button></td>
+					<?php } else { ?>
+						<td><?= $expired ?></td>
+					<?php } ?>
+					<?php if($visa->send_notification !== null) { ?>
 					<td><?= date('d/F/Y', strtotime($visa->send_notification)) ?></td>
+					<?php } else { ?>
+					<td><?= "-" ?></td>
+					<?php } ?>
 					<td><?php if($visa->status_notification == 0){
 						?> <button type="button" class="btn bg-navy btn-flat margin">unsent</button> <?php
 					}else{
@@ -48,6 +58,8 @@
 					<td><?php echo anchor(site_url('email/send/' . $visa->id.'/visa'), 'Send Email', array('data-toggle' => 'tooltip', 'title' => 'edit data', 'class' => 'btn bg-purple btn-normal')) ?></td>
 					<td><?php echo anchor(site_url('whatsapp/send/' . $visa->id.'/visa'), 'Send Wa', array('data-toggle' => 'tooltip', 'title' => 'edit data', 'class' => 'btn bg-olive btn-normal')) ?></td>
 					<?php } ?>
+					<td><?php echo anchor(site_url('cron/job/'), 'Cron', array('data-toggle' => 'tooltip', 'title' => 'edit data', 'class' => 'btn bg-olive btn-normal')) ?></td>
+				
 					<td><?php echo anchor(site_url('visa/edit/' . $visa->id), 'Edit', array('data-toggle' => 'tooltip', 'title' => 'edit data', 'class' => 'btn bg-orange btn-normal')) ?></td>
 					<td><?php echo anchor(site_url('visa/detail/' . $visa->id), 'Detail', array('data-toggle' => 'tooltip', 'title' => 'edit data', 'class' => 'btn bg-navy btn-normal')) ?></td>
 					

@@ -14,9 +14,9 @@ class Itk extends MY_Controller
     public function index()
     {
         $data            = konfigurasi('Itk', 'Kelola Itk');
-        $now = new DateTime(Date('Y-m-d'));
         $data['itk'] = $this->Itk_model->get_all();
         $data['hari'] = 'SEMUA';
+        $now = new DateTime(Date('Y-m-d'));
         $data['date_now'] = $now;
         $this->template->load('layouts/template', 'itk/index', $data);
     }
